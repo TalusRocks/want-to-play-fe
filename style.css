@@ -1,0 +1,66 @@
+a, p, h1, h2, h3, h4 {
+  font-family: sans-serif;
+  margin: 0em;
+}
+
+a {
+  text-decoration: none;
+}
+
+.btn {
+  background-color: #03a9f4;
+  color: #fff;
+  text-transform: uppercase;
+  text-align: center;
+  margin: 0.25em;
+  height: 3em;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.add-game-wrap {
+  display: flex;
+  justify-content: center;
+}
+
+.sort-filter-tags-wrap {
+  display: flex;
+  justify-content: space-between;
+}
+
+section {
+  margin: 0.25em;
+}
+
+.game-specs {
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+}
+
+.game-specs > div {
+  text-align: center;
+  background-color: #FF5722;
+  width: 20%;
+}
+
+.spec-number {
+  font-size: 1.1em;
+  margin: 6px;
+}
+
+.spec-label {
+  font-size: 0.6em;
+  margin: 7px;
+}
+
+.title, .notes, .tag {
+  padding: 10px;
+}
+
+.game-tags {
+  display: flex;
+  background-color: #eeeeee;
+}

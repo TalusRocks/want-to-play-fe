@@ -34,6 +34,10 @@ section {
   margin: 0.25em;
 }
 
+.game-item {
+  margin-top: 1.5em;
+}
+
 .game-specs {
   display: flex;
   justify-content: space-between;
@@ -47,7 +51,7 @@ section {
 }
 
 .spec-number {
-  font-size: 1.1em;
+  font-size: 1em;
   margin: 6px;
 }
 
@@ -56,11 +60,16 @@ section {
   margin: 7px;
 }
 
+.game-title-notes {
+  background-color: #F5F5F5;
+}
+
 .title, .notes, .tag {
   padding: 10px;
 }
 
 .game-tags {
   display: flex;
-  background-color: #eeeeee;
+  flex-wrap: wrap;
+  background-color: #e0e0e0;
 }

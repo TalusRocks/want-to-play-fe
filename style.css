@@ -60,7 +60,7 @@ section {
   margin: 7px;
 }
 
-.game-title-notes {
+.game-title-notes-tags {
   background-color: #F5F5F5;
 }
 
@@ -72,4 +72,21 @@ section {
   display: flex;
   flex-wrap: wrap;
   background-color: #e0e0e0;
+}
+
+@media(min-width:945px){
+  .game-item {
+    display: flex;
+  }
+  .game-specs > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .game-title-notes-tags {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
 }

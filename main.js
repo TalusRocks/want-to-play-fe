@@ -8,6 +8,7 @@ function loadGames(baseURL) {
       games.forEach(e => {
         gameList.innerHTML += gameItem(e.interest, e.minPlayer, e.maxPlayer, e.minTime, e.maxTime, e.ratingBGG, e.weightBGG, e.name, e.notes)
       })
+      colorRanges()
     })
     .catch(errors => {
       console.log(errors);

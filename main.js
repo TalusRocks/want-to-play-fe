@@ -1,12 +1,12 @@
-const baseURL = 'http://localhost:3000/games'
+const gamesURL = 'http://localhost:3000/games'
 let gameList = document.querySelector('.game-list')
 
-function loadGames(baseURL) {
-  axios.get(baseURL)
+function loadGames(gamesURL) {
+  axios.get(gamesURL)
     .then(result => {
       let games = result.data
       games.forEach(e => {
-        gameList.innerHTML += gameItem(e.interest, e.minPlayer, e.maxPlayer, e.minTime, e.maxTime, e.ratingBGG, e.weightBGG, e.name, e.notes)
+        gameList.innerHTML += gameItem(e.interest, e.minPlayer, e.maxPlayer, e.minTime, e.maxTime, e.ratingBGG, e.weightBGG, e.name, e.notes, e.id, e.tags)
       })
       colorRanges()
     })
@@ -14,4 +14,4 @@ function loadGames(baseURL) {
       console.log(errors);
     })
 }
-loadGames(baseURL)
+loadGames(gamesURL)

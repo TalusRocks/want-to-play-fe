@@ -1,4 +1,4 @@
-function gameItem(interest, minPlayer, maxPlayer, minTime, maxTime, ratingBGG, weightBGG, name, notes) {
+function gameItem(interest, minPlayer, maxPlayer, minTime, maxTime, ratingBGG, weightBGG, name, notes, gameId, tags) {
   return `<section class="game-item">
             <div class="game-specs">
               <div class="interest">
@@ -25,9 +25,18 @@ function gameItem(interest, minPlayer, maxPlayer, minTime, maxTime, ratingBGG, w
             <div class="game-title-notes-tags">
               <h2 class="title">${name}</h2>
               <p class="notes">${notes}</p>
-              <div class="game-tags">
-                <p class="tag"><a href="#">quick-to-teach</a></p>
+              <div class="game-tags" data-id="${gameId}">
+              ${populateTags(tags)}
               </div>
             </div>
           </section>`
+}
+
+function populateTags (tagArr) {
+  let result = ''
+  tagArr.forEach(tag => result += createTag(tag.id, tag.name))
+  return result
+}
+function createTag(tagId, tagName) {
+  return `<p class="tag" data-id="${tagId}"><a href="#">${tagName}</a></p>`
 }

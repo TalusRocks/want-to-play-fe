@@ -1,19 +1,20 @@
 let interest = document.querySelectorAll('.interest .spec-number')
 interest.forEach(e => {
   let thisInterest = parseInt(e.textContent)
+  let interestDivClass = e.parentElement.classList
 
   if (thisInterest === 1 || thisInterest === 2) {
-    e.parentElement.classList.add('interest-blue')
+    interestDivClass.add('orange-1')
   } else if (thisInterest === 3 || thisInterest === 4) {
-    e.parentElement.classList.add('interest-green')
+    interestDivClass.add('orange-2')
   } else if (thisInterest === 5 || thisInterest === 6) {
-    e.parentElement.classList.add('interest-yellow')
+    interestDivClass.add('orange-3')
   } else if (thisInterest === 7 || thisInterest === 8) {
-    e.parentElement.classList.add('interest-orange')
+    interestDivClass.add('orange-4')
   } else if (thisInterest === 9) {
-    e.parentElement.classList.add('interest-red')
+    interestDivClass.add('orange-5')
   } else if (thisInterest === 10) {
-    e.parentElement.classList.add('interest-purple')
+    interestDivClass.add('orange-6')
   }
 })
 
@@ -50,5 +51,41 @@ minuteRange.forEach(e => {
     minutesDivClass.add('blue-4')
   } else if (thisMinuteMax >= 221) {
     minutesDivClass.add('blue-5')
+  }
+})
+
+let rating = document.querySelectorAll('.rating')
+rating.forEach(e => {
+  let thisRating = parseInt(e.textContent)
+  let ratingDivClass = e.classList
+
+  if (thisRating >= 0 && thisRating <= 2) {
+    ratingDivClass.add('green-1')
+  } else if (thisRating >= 2.01 && thisRating <= 4) {
+    ratingDivClass.add('green-2')
+  } else if (thisRating >= 4.01 && thisRating <= 6) {
+    ratingDivClass.add('green-3')
+  } else if (thisRating >= 6.01 && thisRating <= 8) {
+    ratingDivClass.add('green-4')
+  } else if (thisRating >= 8.01 && thisRating <= 10) {
+    ratingDivClass.add('green-5')
+  }
+})
+
+let weight = document.querySelectorAll('.weight')
+weight.forEach(e => {
+  let thisWeight = parseInt(e.textContent)
+  let weightDivClass = e.classList
+
+  if (thisWeight >= 0 && thisWeight <= 1) {
+    weightDivClass.add('purple-1')
+  } else if (thisWeight >= 1.01 && thisWeight <= 2) {
+    weightDivClass.add('purple-2')
+  } else if (thisWeight >= 2.01 && thisWeight <= 3) {
+    weightDivClass.add('purple-3')
+  } else if (thisWeight >= 3.01 && thisWeight <= 4) {
+    weightDivClass.add('purple-4')
+  } else if (thisWeight >= 4.01 && thisWeight <= 5) {
+    weightDivClass.add('purple-5')
   }
 })

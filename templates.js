@@ -1,4 +1,4 @@
-function gameItem(name, interest, minPlayer, maxPlayer, minTime, maxTime, ratingBGG, weightBGG, notes, gameId, tags) {
+function gameItem(name, interest, minPlayer, maxPlayer, minTime, maxTime, ratingBGG, weightBGG, notes, tags, gameId) {
   return `<section class="game-item" data-id="${gameId}">
           <a id="${name}"></a>
             <div class="game-specs">
@@ -43,7 +43,7 @@ function createTag(tagId, tagName) {
 
 
 function addGameView() {
-  return `        <section class="form-wrap mb-5">
+  return `        <section class="form-wrap mb-5 data-id="${gameId}"">
     <div class="close-view">
       <i class="material-icons close-x cancel">close</i>
     </div>
@@ -141,7 +141,7 @@ function addGameView() {
 
       <div class="form-row mt-2">
         <label for="tags" id="tags">Tags (comma, separated)</label>
-        <input type="text" name="tags" class="mt-05">
+        <input type="text" name="tags" id="tags-input" class="mt-05">
       </div>
 
       <div class="form-row cancel-save mt-2">
@@ -153,7 +153,7 @@ function addGameView() {
   </section>`
 }
 
-function editGameView(name, interest, minPlayer, maxPlayer, minTime, maxTime, ratingBGG, weightBGG, notes, gameId, tags) {
+function editGameView(name, interest, minPlayer, maxPlayer, minTime, maxTime, ratingBGG, weightBGG, notes, tags, gameId) {
   return `<section class="form-wrap mb-5" data-id="${gameId}">
     <div class="close-view">
       <i class="material-icons close-x cancel">close</i>
@@ -252,7 +252,7 @@ function editGameView(name, interest, minPlayer, maxPlayer, minTime, maxTime, ra
 
       <div class="form-row mt-2">
         <label for="tags" id="tags">Tags (comma, separated)</label>
-        <input type="text" name="tags" class="mt-05" value="${tags}">
+        <input type="text" name="tags" id="tags-input" class="mt-05" value="${tags}">
       </div>
 
       <div class="form-row cancel-save mt-2">

@@ -25,7 +25,7 @@ function loadGames(gamesURL) {
     .then(result => {
       let games = result.data
       games.forEach(e => {
-        gameList.innerHTML += gameItem(e.name, e.interest, e.minPlayer, e.maxPlayer, e.minTime, e.maxTime, e.ratingBGG, e.weightBGG, e.notes, e.id, e.tags)
+        gameList.innerHTML += gameItem(e.name, e.interest, e.minPlayer, e.maxPlayer, e.minTime, e.maxTime, e.ratingBGG, e.weightBGG, e.notes, e.tags, e.id)
       })
       colorRanges()
 
@@ -33,7 +33,7 @@ function loadGames(gamesURL) {
       for (let i = 0; i < gameEditLink.length; i++) {
         gameEditLink[i].addEventListener('click', (e) => {
           let thisData = result.data[i]
-          editGame(thisData.name, thisData.interest, thisData.minPlayer, thisData.maxPlayer, thisData.minTime, thisData.maxTime, thisData.ratingBGG, thisData.weightBGG, thisData.notes, thisData.gameId, thisData.tags, gamesURL)
+          editGame(thisData.name, thisData.interest, thisData.minPlayer, thisData.maxPlayer, thisData.minTime, thisData.maxTime, thisData.ratingBGG, thisData.weightBGG, thisData.notes, thisData.tags, thisData.id)
         })
       }
     })
@@ -71,8 +71,14 @@ addGameBtn.addEventListener('click', (e) => {
     let ratingBGG = document.querySelector('#rating-input').value
     let weightBGG = document.querySelector('#weight-input').value
     let notes = document.querySelector('#notes-input').value
+    let tags = document.querySelector('#tags-input').value
+    tags = tags.split(',')
+    console.log(tags);
 
-    axios.post(gamesURL, {name, interest, minPlayer, maxPlayer, minTime, maxTime, ratingBGG, weightBGG, notes})
+    axios.post(gamesURL, {name, interest, minPlayer, maxPlayer, minTime, maxTime, ratingBGG, weightBGG, notes, tags})
+      .then(result => {
+        //axios.post(tagsURL???)
+      })
       .then(result => {
         return goHome(gamesURL)
       })
@@ -94,15 +100,89 @@ function goToAnchor(gamesURL, name) {
 }
 
 ///////////EDIT GAME
-function editGame(name, interest, minPlayer, maxPlayer, minTime, maxTime, ratingBGG, weightBGG, notes, gameId, tags, gamesURL) {
+function editGame(name, interest, minPlayer, maxPlayer, minTime, maxTime, ratingBGG, weightBGG, notes, tags, gameId) {
 
   //LOAD VIEW
-  gameList.innerHTML = editGameView(name, interest, minPlayer, maxPlayer, minTime, maxTime, ratingBGG, weightBGG, notes, gameId, tags, gamesURL)
+  gameList.innerHTML = editGameView(name, interest, minPlayer, maxPlayer, minTime, maxTime, ratingBGG, weightBGG, notes, tags, gameId)
   allButtons.classList.add('hide')
 
   //listen for submit
-  //axios put route
+  //!!!!!!!!! copied from submit, with only a change in url !!!!!!
+  let submit = document.querySelector('#submit')
+  submit.addEventListener('click', (e) => {
+    e.preventDefault()
+    let name = document.querySelector('#game-name-input').value
+    let interest
+    let interestRange = document.getElementsByName('interest')
+    for (let i = 0; i < interestRange.length; i++) {
+      if (interestRange[i].checked) {
+        interest = interestRange[i].value
+        break;
+      }
+    }
+    let minPlayer = document.querySelector('#player-min-input').value
+    let maxPlayer = document.querySelector('#player-max-input').value
+    let minTime = document.querySelector('#time-min-input').value
+    let maxTime = document.querySelector('#time-max-input').value
+    let ratingBGG = document.querySelector('#rating-input').value
+    let weightBGG = document.querySelector('#weight-input').value
+    let notes = document.querySelector('#notes-input').value
+    let tags = document.querySelector('#tags-input').value
+    tags = tags.split(',')
+
+    axios.put(`${gamesURL}/${gameId}`, {name, interest, minPlayer, maxPlayer, minTime, maxTime, ratingBGG, weightBGG, notes, tags})
+      .then(result => {
+        return goHome(gamesURL)
+      })
+      .then(result => {
+        goToAnchor(gamesURL, name)
+      })
+      .catch(errors => {
+        console.log(errors);
+      })
+  })
+
+  //listen for delete
+  let deleteButton = document.querySelector('#delete')
+  deleteButton.addEventListener('click', (e) => {
+    deleteGame(gameId)
+  })
 
   //CANCEL
   cancelAndGoHome(gamesURL)
 }
+
+//////////DELETE
+function deleteGame(gameId) {
+  axios.delete(`${gamesURL}/${gameId}`)
+    .then(result => {
+      goHome(gamesURL)
+    })
+}
+
+//why can't I pull this out?
+// function submitListener(){
+//   let submit = document.querySelector('#submit')
+//   submit.addEventListener('click', (e) => {
+//     e.preventDefault()
+//     let name = document.querySelector('#game-name-input').value
+//     let interest
+//     let interestRange = document.getElementsByName('interest')
+//     for (let i = 0; i < interestRange.length; i++) {
+//       if (interestRange[i].checked) {
+//         interest = interestRange[i].value
+//         break;
+//       }
+//     }
+//     let minPlayer = document.querySelector('#player-min-input').value
+//     let maxPlayer = document.querySelector('#player-max-input').value
+//     let minTime = document.querySelector('#time-min-input').value
+//     let maxTime = document.querySelector('#time-max-input').value
+//     let ratingBGG = document.querySelector('#rating-input').value
+//     let weightBGG = document.querySelector('#weight-input').value
+//     let notes = document.querySelector('#notes-input').value
+//     let tags = document.querySelector('#tags-input').value
+//     tags = tags.split(',')
+//
+//     return {name, interest, minPlayer, maxPlayer, minTime, maxTime, ratingBGG, weightBGG, notes, tags}
+// }

@@ -32,6 +32,9 @@ main {
 .mt-3 {
   margin-top: 3em;
 }
+.mt-5 {
+  margin-top: 5em;
+}
 
 .mtb-1 {
   margin-top: 1em;
@@ -224,6 +227,14 @@ button {
 }
 #cancel:hover {
   background-color: #616161;
+}
+
+#delete {
+  color: #e53935;
+}
+#delete:hover {
+  background-color: #ffcdd2;
+  padding: 1em 10em;
 }
 
 /*SCREEN SIZES--------------------------*/

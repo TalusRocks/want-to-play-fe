@@ -1,6 +1,6 @@
 function gameItem(name, interest, minPlayer, maxPlayer, minTime, maxTime, ratingBGG, weightBGG, notes, gameId, tags) {
   return `<section class="game-item" data-id="${gameId}">
-          <a name="${name}"></a>
+          <a id="${name}"></a>
             <div class="game-specs">
               <div class="interest">
                 <p class="spec-number">${interest}</p>
@@ -170,43 +170,43 @@ function editGameView(name, interest, minPlayer, maxPlayer, minTime, maxTime, ra
         <p>Level of interest</p><br>
         <div class="radio-row">
           <div>
-            <input type="radio" name="interest" id="interest-1" value="1">
+            <input type="radio" name="interest" id="interest-1" value="1" ${interest == '1' ? 'checked' : ''}>
             <label for="interest-1"><span>1</span></label>
           </div>
           <div>
-            <input type="radio" name="interest" id="interest-2" value="2">
+            <input type="radio" name="interest" id="interest-2" value="2" ${interest == '2' ? 'checked' : ''}>
             <label for="interest-2">2</label>
           </div>
           <div>
-            <input type="radio" name="interest" id="interest-3" value="3">
+            <input type="radio" name="interest" id="interest-3" value="3" ${interest == '3' ? 'checked' : ''}>
             <label for="interest-3">3</label>
           </div>
           <div>
-            <input type="radio" name="interest" id="interest-4" value="4">
+            <input type="radio" name="interest" id="interest-4" value="4" ${interest == '4' ? 'checked' : ''}>
             <label for="interest-4">4</label>
           </div>
           <div>
-            <input type="radio" name="interest" id="interest-5" value="5">
+            <input type="radio" name="interest" id="interest-5" value="5" ${interest == '5' ? 'checked' : ''}>
             <label for="interest-5">5</label>
           </div>
           <div>
-            <input type="radio" name="interest" id="interest-6" value="6">
+            <input type="radio" name="interest" id="interest-6" value="6" ${interest == '6' ? 'checked' : ''}>
             <label for="interest-6">6</label>
           </div>
           <div>
-            <input type="radio" name="interest" id="interest-7" value="7">
+            <input type="radio" name="interest" id="interest-7" value="7" ${interest == '7' ? 'checked' : ''}>
             <label for="interest-7">7</label>
           </div>
           <div>
-            <input type="radio" name="interest" id="interest-8" value="8">
+            <input type="radio" name="interest" id="interest-8" value="8" ${interest == '8' ? 'checked' : ''}>
             <label for="interest-8">8</label>
           </div>
           <div>
-            <input type="radio" name="interest" id="interest-9" value="9">
+            <input type="radio" name="interest" id="interest-9" value="9" ${interest == '9' ? 'checked' : ''}>
             <label for="interest-9">9</label>
           </div>
           <div>
-            <input type="radio" name="interest" id="interest-10" value="10">
+            <input type="radio" name="interest" id="interest-10" value="10" ${interest == '10' ? 'checked' : ''}>
             <label for="interest-10">10</label>
           </div>
         </div>
@@ -258,6 +258,10 @@ function editGameView(name, interest, minPlayer, maxPlayer, minTime, maxTime, ra
       <div class="form-row cancel-save mt-2">
         <button id="cancel" class="cancel">Cancel</button>
         <button type="submit" id="submit">Save</button>
+      </div>
+
+      <div>
+        <p class="text-center mt-5 mb-2"><a id="delete" href="#">Delete</a></p>
       </div>
 
     </form>

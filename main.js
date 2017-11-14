@@ -7,17 +7,21 @@ function cancelAndGoHome(gamesURL) {
   let cancel = document.querySelectorAll('.cancel')
   cancel.forEach(e => {
     e.addEventListener('click', (e) => {
-      gameList.innerHTML = ""
-      loadGames(gamesURL)
-      allButtons.classList.remove('hide')
+      goHome(gamesURL)
     })
   })
 }
 
+function goHome(gamesURL) {
+  gameList.innerHTML = ""
+  return loadGames(gamesURL).then(() => {
+    allButtons.classList.remove('hide')
+  })
+}
 
 //////////LOAD ALL GAMES
 function loadGames(gamesURL) {
-  axios.get(gamesURL)
+  return axios.get(gamesURL)
     .then(result => {
       let games = result.data
       games.forEach(e => {
@@ -70,10 +74,9 @@ addGameBtn.addEventListener('click', (e) => {
 
     axios.post(gamesURL, {name, interest, minPlayer, maxPlayer, minTime, maxTime, ratingBGG, weightBGG, notes})
       .then(result => {
-        goHome(gamesURL)
+        return goHome(gamesURL)
       })
       .then(result => {
-        //not redirecting??
         goToAnchor(gamesURL, name)
       })
       .catch(errors => {

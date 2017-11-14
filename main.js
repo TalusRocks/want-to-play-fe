@@ -1,5 +1,6 @@
 const gamesURL = 'http://localhost:3000/games'
 let gameList = document.querySelector('.game-list')
+let mainDiv = document.querySelector('main')
 
 function loadGames(gamesURL) {
   axios.get(gamesURL)
@@ -15,3 +16,8 @@ function loadGames(gamesURL) {
     })
 }
 loadGames(gamesURL)
+
+let addGameBtn = document.querySelector('.add-game')
+addGameBtn.addEventListener('click', (e) => {
+  mainDiv.innerHTML = addGameView()
+})

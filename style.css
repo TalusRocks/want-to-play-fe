@@ -51,6 +51,10 @@ main {
   margin-bottom: 5em;
 }
 
+.hide {
+  display: none;
+}
+
 /*FILTERING BUTTONS--------------------------*/
 .btn {
   /*background-color: #03a9f4;*/

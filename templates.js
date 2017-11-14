@@ -43,14 +43,14 @@ function createTag(tagId, tagName) {
 function addGameView() {
   return `        <section class="form-wrap mb-5">
     <div class="close-view">
-      <i class="material-icons close-x">close</i>
+      <i class="material-icons close-x cancel">close</i>
     </div>
     <h2 class="mt-05 text-center">Add a Game</h2>
     <form>
 
       <div class="form-row mt-2">
         <label for="game-name" id="game-name">Game name</label>
-        <input type="text" name="game-name" class="mt-05">
+        <input type="text" id="game-name-input" name="game-name" class="mt-05">
       </div>
 
       <div class="form-row mt-2">
@@ -102,48 +102,48 @@ function addGameView() {
       <div class="form-row two-input-row">
         <div class="half-form-row">
           <label for="player-min" id="player-min">Player min</label>
-          <input type="text" name="player-min" class="mt-05">
+          <input type="text" id="player-min-input" name="player-min" class="mt-05" placeholder="2">
         </div>
         <div class="half-form-row">
           <label for="player-max" id="player-max">Player max</label>
-          <input type="text" name="player-max" class="mt-05">
+          <input type="text" id="player-max-input" name="player-max" class="mt-05" placeholder="4">
         </div>
       </div>
 
       <div class="form-row two-input-row mt-2">
         <div class="half-form-row">
-          <label for="time-min" id="time-min">Time min</label>
-          <input type="text" name="time-min" class="mt-05">
+          <label for="time-min" id="time-min">Time min (minutes)</label>
+          <input type="text" id="time-min-input" name="time-min" class="mt-05" placeholder="30">
         </div>
         <div class="half-form-row">
-          <label for="time-max" id="time-max">Time max</label>
-          <input type="text" name="time-max" class="mt-05">
+          <label for="time-max" id="time-max">Time max (minutes)</label>
+          <input type="text" id="time-max-input" name="time-max" class="mt-05" placeholder="90">
         </div>
       </div>
 
       <div class="form-row two-input-row mt-2">
         <div class="half-form-row">
-          <label for="rating" id="rating">Rating</label>
-          <input type="text" name="rating" class="mt-05">
+          <label for="rating" id="rating">Rating (1-10)</label>
+          <input type="text" id="rating-input" name="rating" class="mt-05" placeholder="7.0">
         </div>
         <div class="half-form-row">
-          <label for="weight" id="weight">Weight</label>
-          <input type="text" name="weight" class="mt-05">
+          <label for="weight" id="weight">Weight (1-5)</label>
+          <input type="text" id="weight-input" name="weight" class="mt-05" placeholder="3.00">
         </div>
       </div>
 
       <div class="form-row mt-2">
         <label for="notes" id="notes">Notes</label>
-        <textarea name="notes" rows="4" class="mt-05"></textarea>
+        <textarea name="notes" id="notes-input" rows="4" class="mt-05"></textarea>
       </div>
 
       <div class="form-row mt-2">
-        <label for="tags" id="tags">Tags</label>
+        <label for="tags" id="tags">Tags (comma, separated)</label>
         <input type="text" name="tags" class="mt-05">
       </div>
 
       <div class="form-row cancel-save mt-2">
-        <button id="cancel">Cancel</button>
+        <button id="cancel" class="cancel">Cancel</button>
         <button type="submit" id="submit">Save</button>
       </div>
 

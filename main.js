@@ -73,12 +73,8 @@ addGameBtn.addEventListener('click', (e) => {
     let notes = document.querySelector('#notes-input').value
     let tags = document.querySelector('#tags-input').value
     tags = tags.split(',')
-    console.log(tags);
 
     axios.post(gamesURL, {name, interest, minPlayer, maxPlayer, minTime, maxTime, ratingBGG, weightBGG, notes, tags})
-      .then(result => {
-        //axios.post(tagsURL???)
-      })
       .then(result => {
         return goHome(gamesURL)
       })

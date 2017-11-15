@@ -43,7 +43,7 @@ function createTag(tagId, tagName) {
 
 
 function addGameView() {
-  return `        <section class="form-wrap mb-5 data-id="${gameId}"">
+  return `        <section class="form-wrap mb-5>
     <div class="close-view">
       <i class="material-icons close-x cancel">close</i>
     </div>

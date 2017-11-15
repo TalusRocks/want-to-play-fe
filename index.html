@@ -39,16 +39,14 @@
             <i class="material-icons close-x cancel">close</i>
           </div>
           <h2 class="mt-05 text-center">Sort Games</h2>
-          <form>
 
             <div class="mt-2">
               <h3>Sort games by...</h3>
 
-              <div class="all-sortby-checkboxes">
-                <div class="checkbox">
-                  <input type="checkbox" name="sortby" value="interest-desc" id="interest" checked>
-                  <label for="interest" class="sort-var">Interest 10 <i class="material-icons">arrow_downward</i> 1</label>
-                </div>
+              <div class="all-sortby">
+
+                <p class="mt-2" id="placeholder">Select items below in the order you wish to sort</p>
+
               </div>
 
             </div>
@@ -56,34 +54,20 @@
             <div class="mt-2">
               <h3>Then by...</h3>
 
-              <div class="all-thenby-checkboxes">
+              <div class="all-thenby">
 
-                <div class="checkbox-pair">
-                  <div class="checkbox checkbox-half">
-                    <input type="checkbox" name="sortby" value="players-desc" id="players-desc">
-                    <label for="players-desc" class="sort-var">Players 10 <i class="material-icons">arrow_downward</i> 1</label>
-                  </div>
-                  <div class="checkbox checkbox-half">
-                    <input type="checkbox" name="sortby" value="players-asc" id="players-asc">
-                    <label for="players-asc" class="sort-var">Players 1 <i class="material-icons">arrow_upward</i> 10</label>
-                  </div>
+                <p class="sortby mtb-1" id="interest-desc">Interest 10 - 1</p>
+
+                <div class="sort-pair mtb-1">
+                  <p class="sortby" id="players-asc">Players 1 - 10+</p>
+                  <p class="sortby" id="players-desc">Players 10+ - 1</p>
+                </div>
+                <div class="sort-pair mtb-1">
+                  <p class="sortby" id="time-asc">Time 10 - 200+</p>
+                  <p class="sortby" id="time-desc">Time 200+ - 10</p>
                 </div>
 
-                <div class="checkbox-pair">
-                  <div class="checkbox checkbox-half">
-                    <input type="checkbox" name="sortby" value="time-asc" id="time-asc">
-                    <label for="time-asc" class="sort-var">Time 10 <i class="material-icons">arrow_upward</i> 200+</label>
-                  </div>
-                  <div class="checkbox checkbox-half">
-                    <input type="checkbox" name="sortby" value="time-desc" id="time-desc">
-                    <label for="time-desc" class="sort-var">Time 200+ <i class="material-icons">arrow_downward</i> 10</label>
-                  </div>
-                </div>
-
-                <div class="checkbox">
-                  <input type="checkbox" name="sortby" value="rating" id="rating">
-                  <label for="rating" class="sort-var">Rating</label>
-                </div>
+                <p class="sortby mtb-1" id="rating-desc">Rating 10 - 1</p>
 
               </div>
 
@@ -95,7 +79,7 @@
               <button type="submit" id="submit">Sort</button>
             </div>
 
-          </form>
+
         </section>
 
       </article>

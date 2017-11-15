@@ -1,47 +1,3 @@
-function gameItem(name, interest, minPlayer, maxPlayer, minTime, maxTime, ratingBGG, weightBGG, notes, tags, gameId) {
-  return `<section class="game-item" data-id="${gameId}">
-          <a id="${name}"></a>
-            <div class="game-specs">
-              <div class="interest">
-                <p class="spec-number">${interest}</p>
-                <p class="spec-label">INTEREST</p>
-              </div>
-              <div class="player-range">
-                <p class="spec-number"><span class="min-player">${minPlayer}</span> - <span class="max-player">${maxPlayer}</span></p>
-                <p class="spec-label">PLAYERS</p>
-              </div>
-              <div class="time-range">
-                <p class="spec-number"><span class="min-time">${minTime}</span> - <span class="max-time">${maxTime}</span></p>
-                <p class="spec-label">MINUTES</p>
-              </div>
-              <div class="rating">
-                <p class="spec-number">${ratingBGG}</p>
-                <p class="spec-label">RATING</p>
-              </div>
-              <div class="weight">
-                <p class="spec-number">${weightBGG}</p>
-                <p class="spec-label">WEIGHT</p>
-              </div>
-            </div>
-            <div class="game-title-notes-tags">
-              <h2 class="title"><a href="#">${name}</a></h2>
-              <p class="notes">${notes}</p>
-              <div class="game-tags" data-id="${gameId}">
-              ${populateTags(tags)}
-              </div>
-            </div>
-          </section>`
-}
-function populateTags (tagArr) {
-  let result = ''
-  tagArr.forEach(tag => result += createTag(tag.id, tag.name))
-  return result
-}
-function createTag(tagId, tagName) {
-  return `<p class="tag" data-id="${tagId}"><a href="#">${tagName}</a></p>`
-}
-
-
 function addGameView() {
   return `        <section class="form-wrap mb-5>
     <div class="close-view">
@@ -252,7 +208,7 @@ function editGameView(name, interest, minPlayer, maxPlayer, minTime, maxTime, ra
 
       <div class="form-row mt-2">
         <label for="tags" id="tags">Tags (comma, separated)</label>
-        <input type="text" name="tags" id="tags-input" class="mt-05" value="${tags}">
+        <input type="text" name="tags" id="tags-input" class="mt-05" value="${populateTagsString(tags)}">
       </div>
 
       <div class="form-row cancel-save mt-2">
@@ -266,4 +222,14 @@ function editGameView(name, interest, minPlayer, maxPlayer, minTime, maxTime, ra
 
     </form>
   </section>`
+}
+
+function populateTagsString(tagArr) {
+  let tagNameArr = []
+  tagArr.forEach(tagName => {
+    tagNameArr.push(`${tagName.name}`)
+  })
+  return tagNameArr.join(', ')
+  //but I want to store the id somewhere too...
+  //why can't I hide a span inside the input?
 }

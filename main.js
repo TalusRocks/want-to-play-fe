@@ -41,7 +41,7 @@ function loadGames(gamesURL) {
       console.log(errors);
     })
 }
-loadGames(gamesURL)
+//loadGames(gamesURL)
 
 
 ///////////CREATE GAME

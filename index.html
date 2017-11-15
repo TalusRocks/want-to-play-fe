@@ -13,7 +13,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.17.0/axios.min.js" charset="utf-8"></script>
     <!-- my script -->
     <script defer src="main.js" charset="utf-8"></script>
-    <script defer src="templates.js" charset="utf-8"></script>
+    <script defer src="sort.js" charset="utf-8"></script>
+    <script defer src="./templates/templates.js" charset="utf-8"></script>
+    <script defer src="./templates/game-item.js" charset="utf-8"></script>
+    <script defer src="./templates/sort-view.js" charset="utf-8"></script>
     <script defer src="colors.js" charset="utf-8"></script>
   </head>
   <body>
@@ -30,6 +33,70 @@
         </div>
       </div>
       <article class="game-list mt-1">
+
+        <section class="form-wrap mb-5" data-id="${gameId}">
+          <div class="close-view">
+            <i class="material-icons close-x cancel">close</i>
+          </div>
+          <h2 class="mt-05 text-center">Sort Games</h2>
+          <form>
+
+            <div class="mt-2">
+              <h3>Sort games by...</h3>
+
+              <div class="all-sortby-checkboxes">
+                <div class="checkbox">
+                  <input type="checkbox" name="sortby" value="interest-desc" id="interest" checked>
+                  <label for="interest" class="sort-var">Interest 10 <i class="material-icons">arrow_downward</i> 1</label>
+                </div>
+              </div>
+
+            </div>
+
+            <div class="mt-2">
+              <h3>Then by...</h3>
+
+              <div class="all-thenby-checkboxes">
+
+                <div class="checkbox-pair">
+                  <div class="checkbox checkbox-half">
+                    <input type="checkbox" name="sortby" value="players-desc" id="players-desc">
+                    <label for="players-desc" class="sort-var">Players 10 <i class="material-icons">arrow_downward</i> 1</label>
+                  </div>
+                  <div class="checkbox checkbox-half">
+                    <input type="checkbox" name="sortby" value="players-asc" id="players-asc">
+                    <label for="players-asc" class="sort-var">Players 1 <i class="material-icons">arrow_upward</i> 10</label>
+                  </div>
+                </div>
+
+                <div class="checkbox-pair">
+                  <div class="checkbox checkbox-half">
+                    <input type="checkbox" name="sortby" value="time-asc" id="time-asc">
+                    <label for="time-asc" class="sort-var">Time 10 <i class="material-icons">arrow_upward</i> 200+</label>
+                  </div>
+                  <div class="checkbox checkbox-half">
+                    <input type="checkbox" name="sortby" value="time-desc" id="time-desc">
+                    <label for="time-desc" class="sort-var">Time 200+ <i class="material-icons">arrow_downward</i> 10</label>
+                  </div>
+                </div>
+
+                <div class="checkbox">
+                  <input type="checkbox" name="sortby" value="rating" id="rating">
+                  <label for="rating" class="sort-var">Rating</label>
+                </div>
+
+              </div>
+
+            </div>
+
+
+            <div class="form-row cancel-save mt-2">
+              <button id="cancel" class="cancel">Cancel</button>
+              <button type="submit" id="submit">Sort</button>
+            </div>
+
+          </form>
+        </section>
 
       </article>
 

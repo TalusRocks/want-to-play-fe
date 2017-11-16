@@ -37,13 +37,119 @@ function sortGames() {
       sortByDiv.innerHTML += `<p class="sortby mtb-1" id="${selectedArr[i].id}">${selectedArr[i].text}</p>`
   }
 
-  //Capture selected array on submit
+  //Capture selectedArr on submit
+  //and persist to localStorage
   let sortSubmit = document.querySelector('#sort')
   sortSubmit.addEventListener('click', (e) => {
     gameList.innerHTML = loadSorted(selectedArr)
     allButtons.classList.remove('hide')
+    localStorage.setItem('selectedSortArr', JSON.stringify(selectedArr))
   })
 
   //Cancel
   cancelAndGoHome(gamesURL)
+
+
 }
+
+
+let currentSortDiv = document.querySelector('.current-sort')
+///LOAD AS SORTED
+function loadSorted(selectedArr){
+
+  axios.get(gamesURL)
+    .then(result => {
+      let sortThis = result.data
+
+      //loop over sort array to find what to sort by
+      for (let i = 0; i < selectedArr.length; i++) {
+
+        if (selectedArr[i].id === "interest-desc") {
+          sortThis.sort(function(a, b) {
+            return b.interest - a.interest
+          })
+        }
+        if (selectedArr[i].id === "rating-desc") {
+          sortThis.sort(function(a, b) {
+            return b.ratingBGG - a.ratingBGG
+          })
+        }
+        if (selectedArr[i].id === "players-asc") {
+          sortThis.sort(function(a, b) {
+            return a.maxPlayer - b.maxPlayer
+          })
+        }
+        if (selectedArr[i].id === "players-desc") {
+          sortThis.sort(function(a, b) {
+            return b.maxPlayer - a.maxPlayer
+          })
+        }
+        if (selectedArr[i].id === "time-asc") {
+          sortThis.sort(function(a, b) {
+            return a.maxTime - b.maxTime
+          })
+        }
+        if (selectedArr[i].id === "time-desc") {
+          sortThis.sort(function(a, b) {
+            return b.maxTime - a.maxTime
+          })
+        }
+
+      }
+
+      //add current sort to Games View
+      let savedSort = JSON.parse(localStorage.getItem('selectedSortArr'))
+      let sArr = []
+      savedSort.forEach(e => { sArr.push(e.text) })
+      savedSort = sArr.join(', ')
+      currentSortDiv.innerHTML += sortingBy(savedSort)
+
+      //add Games
+      sortThis.forEach(e => {
+        gameList.innerHTML += gameItem(e.name, e.interest, e.minPlayer, e.maxPlayer, e.minTime, e.maxTime, e.ratingBGG, e.weightBGG, e.notes, e.tags, e.id)
+      })
+      colorRanges()
+
+      clearSortStorage()
+    }) //close THEN
+}
+
+//remove "sorting by" from DOM and clear localStorage
+function clearSortStorage() {
+  let clearSortbyX = document.querySelector('.clear-sortby')
+  clearSortbyX.addEventListener('click', (e) => {
+    localStorage.removeItem('selectedSortArr')
+    currentSortDiv.innerHTML = ""
+  })
+}
+
+
+
+
+//MATT's CODE
+// let searchObj = {
+//   interest: "interest",
+//   rating: "ratingBGG",
+//   players: "maxPlayer"
+// }
+// const ascSort = (a, b) => b - a
+// const descSort = (a, b) => a - b
+//       console.log(selectedArr)
+//       let sortParam = el.id.split('-')
+//       let sortTypes = selectedArr.map(el => searchObj[sortParam[0]])
+//
+//       let someOtherName = sortTypes.reduce((sortedArr, sortType, index, arr) => {
+//         console.log(sortedArr);
+//       	sortedArr.sort(function(a, b) {
+//       		if(index > 0 && a[arr[index - 1]] == b[arr[index - 1]]) {
+//       			return a[sortType] - b[sortType];
+//       		} else if (index === 0) {
+//       			return a[sortType] - b[sortType];
+//       		} else {
+//       			return 0;
+//       		}
+//       	})
+//
+//       	return sortedArr
+//       }, sortThis)
+// console.log(someOtherName);

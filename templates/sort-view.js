@@ -15,16 +15,16 @@ function sortGamesView() {
               <div class="mt-2">
                 <h3>Then by...</h3>
                 <div class="all-thenby">
-                  <p class="sortby mtb-1" id="interest-desc">Interest 10 - 1</p>
+                  <p class="sortby mtb-1" id="interest-desc">Interest Descending</p>
                   <div class="sort-pair mtb-1">
-                    <p class="sortby" id="players-asc">Players 1 - 10+</p>
-                    <p class="sortby" id="players-desc">Players 10+ - 1</p>
+                    <p class="sortby" id="players-asc">Players Ascending</p>
+                    <p class="sortby" id="players-desc">Players Descending</p>
                   </div>
                   <div class="sort-pair mtb-1">
-                    <p class="sortby" id="time-asc">Time 10 - 200+</p>
-                    <p class="sortby" id="time-desc">Time 200+ - 10</p>
+                    <p class="sortby" id="time-asc">Time Ascending</p>
+                    <p class="sortby" id="time-desc">Time Descending</p>
                   </div>
-                  <p class="sortby mtb-1" id="rating-desc">Rating 10 - 1</p>
+                  <p class="sortby mtb-1" id="rating-desc">Rating Descending</p>
                 </div>
               </div>
 
@@ -33,4 +33,11 @@ function sortGamesView() {
                 <button id="sort">Sort</button>
               </div>
           </section>`
+}
+
+function sortingBy(selectedSortArr) {
+  return `        <div class="sorting-by">
+            <p><b>Sorting by: </b><i> ${selectedSortArr}</i></p>
+            <i class="material-icons clear-sortby">close</i>
+          </div>`
 }

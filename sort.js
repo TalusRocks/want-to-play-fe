@@ -37,6 +37,13 @@ function sortGames() {
       sortByDiv.innerHTML += `<p class="sortby mtb-1" id="${selectedArr[i].id}">${selectedArr[i].text}</p>`
   }
 
+  //Capture selected array on submit
+  let sortSubmit = document.querySelector('#sort')
+  sortSubmit.addEventListener('click', (e) => {
+    gameList.innerHTML = loadSorted(selectedArr)
+    allButtons.classList.remove('hide')
+  })
+
   //Cancel
-  cancelAndGoHome(gamesURL) 
+  cancelAndGoHome(gamesURL)
 }

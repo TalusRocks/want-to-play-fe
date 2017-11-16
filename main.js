@@ -41,7 +41,8 @@ function loadGames(gamesURL) {
       console.log(errors);
     })
 }
-//loadGames(gamesURL)
+///////****************TURN IT ON************//////
+loadGames(gamesURL)
 
 
 ///////////CREATE GAME
@@ -156,29 +157,15 @@ function deleteGame(gameId) {
     })
 }
 
-//why can't I pull this out?
-// function submitListener(){
-//   let submit = document.querySelector('#submit')
-//   submit.addEventListener('click', (e) => {
-//     e.preventDefault()
-//     let name = document.querySelector('#game-name-input').value
-//     let interest
-//     let interestRange = document.getElementsByName('interest')
-//     for (let i = 0; i < interestRange.length; i++) {
-//       if (interestRange[i].checked) {
-//         interest = interestRange[i].value
-//         break;
-//       }
-//     }
-//     let minPlayer = document.querySelector('#player-min-input').value
-//     let maxPlayer = document.querySelector('#player-max-input').value
-//     let minTime = document.querySelector('#time-min-input').value
-//     let maxTime = document.querySelector('#time-max-input').value
-//     let ratingBGG = document.querySelector('#rating-input').value
-//     let weightBGG = document.querySelector('#weight-input').value
-//     let notes = document.querySelector('#notes-input').value
-//     let tags = document.querySelector('#tags-input').value
-//     tags = tags.split(',')
-//
-//     return {name, interest, minPlayer, maxPlayer, minTime, maxTime, ratingBGG, weightBGG, notes, tags}
-// }
+//////////SORT LISTENER
+let sortButton = document.querySelector('.sort')
+sortButton.addEventListener('click', (e) => {
+  gameList.innerHTML = ""
+  gameList.innerHTML = sortGamesView()
+  allButtons.classList.add('hide')
+  sortGames()
+})
+
+
+
+/////////////////////////////////////////////////////

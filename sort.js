@@ -61,8 +61,8 @@ function loadSorted(selectedArr){
     .then(result => {
       let sortThis = result.data
 
-      //loop over sort array to find what to sort by
-      for (let i = 0; i < selectedArr.length; i++) {
+      //loop over sort array BACKWARDS
+      for (let i = selectedArr.length - 1; i >= 0 ; i--) {
 
         if (selectedArr[i].id === "interest-desc") {
           sortThis.sort(function(a, b) {
@@ -122,34 +122,3 @@ function clearSortStorage() {
     currentSortDiv.innerHTML = ""
   })
 }
-
-
-
-
-//MATT's CODE
-// let searchObj = {
-//   interest: "interest",
-//   rating: "ratingBGG",
-//   players: "maxPlayer"
-// }
-// const ascSort = (a, b) => b - a
-// const descSort = (a, b) => a - b
-//       console.log(selectedArr)
-//       let sortParam = el.id.split('-')
-//       let sortTypes = selectedArr.map(el => searchObj[sortParam[0]])
-//
-//       let someOtherName = sortTypes.reduce((sortedArr, sortType, index, arr) => {
-//         console.log(sortedArr);
-//       	sortedArr.sort(function(a, b) {
-//       		if(index > 0 && a[arr[index - 1]] == b[arr[index - 1]]) {
-//       			return a[sortType] - b[sortType];
-//       		} else if (index === 0) {
-//       			return a[sortType] - b[sortType];
-//       		} else {
-//       			return 0;
-//       		}
-//       	})
-//
-//       	return sortedArr
-//       }, sortThis)
-// console.log(someOtherName);

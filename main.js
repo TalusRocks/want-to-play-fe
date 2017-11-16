@@ -28,6 +28,7 @@ function loadGames(gamesURL) {
         gameList.innerHTML += gameItem(e.name, e.interest, e.minPlayer, e.maxPlayer, e.minTime, e.maxTime, e.ratingBGG, e.weightBGG, e.notes, e.tags, e.id)
       })
       colorRanges()
+      localStorage.removeItem('selectedSortArr')
 
       let gameEditLink = document.querySelectorAll('.title')
       for (let i = 0; i < gameEditLink.length; i++) {

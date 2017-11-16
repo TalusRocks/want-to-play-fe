@@ -33,17 +33,18 @@ function sortGames() {
   //populate html, according to selected array
   function loadSelected(selectedArr) {
     sortByDiv.innerHTML = ""
-    for(let i = 0; i < selectedArr.length; i++)
+    for(let i = 0; i < selectedArr.length; i++) {
       sortByDiv.innerHTML += `<p class="sortby mtb-1" id="${selectedArr[i].id}">${selectedArr[i].text}</p>`
+    }
   }
 
   //Capture selectedArr on submit
   //and persist to localStorage
   let sortSubmit = document.querySelector('#sort')
   sortSubmit.addEventListener('click', (e) => {
-    gameList.innerHTML = loadSorted(selectedArr)
-    allButtons.classList.remove('hide')
-    localStorage.setItem('selectedSortArr', JSON.stringify(selectedArr))
+    loadSorted(selectedArr).then(() => {
+      allButtons.classList.remove('hide')
+    })
   })
 
   //Cancel
@@ -56,8 +57,7 @@ function sortGames() {
 let currentSortDiv = document.querySelector('.current-sort')
 ///LOAD AS SORTED
 function loadSorted(selectedArr){
-
-  axios.get(gamesURL)
+  return axios.get(gamesURL)
     .then(result => {
       let sortThis = result.data
 
@@ -98,13 +98,20 @@ function loadSorted(selectedArr){
       }
 
       //add current sort to Games View
+      localStorage.setItem('selectedSortArr', JSON.stringify(selectedArr))
       let savedSort = JSON.parse(localStorage.getItem('selectedSortArr'))
       let sArr = []
+      // for (let i = 0; i < savedSort.length; i++) {
+      //   sArr.push(savedSort[i].text)
+      // }
       savedSort.forEach(e => { sArr.push(e.text) })
+      console.log(sArr);
       savedSort = sArr.join(', ')
+      console.log(savedSort);
       currentSortDiv.innerHTML += sortingBy(savedSort)
 
       //add Games
+      gameList.innerHTML = ""
       sortThis.forEach(e => {
         gameList.innerHTML += gameItem(e.name, e.interest, e.minPlayer, e.maxPlayer, e.minTime, e.maxTime, e.ratingBGG, e.weightBGG, e.notes, e.tags, e.id)
       })

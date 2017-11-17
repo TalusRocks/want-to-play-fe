@@ -88,24 +88,9 @@ function filterGamesView() {
   </section>`
 }
 
-// <div class="form-row two-input-row mt-2">
-//   <div class="half-form-row">
-//     <label for="player-min" id="player-min">Player min</label>
-//     <input type="text" id="player-min-input" name="player-min" class="mt-05" placeholder="2">
-//   </div>
-//   <div class="half-form-row">
-//     <label for="player-max" id="player-max">Player max</label>
-//     <input type="text" id="player-max-input" name="player-max" class="mt-05" placeholder="4">
-//   </div>
-// </div>
-
-// <div class="form-row two-input-row mt-2">
-//   <div class="half-form-row">
-//     <label for="time-min" id="time-min">Time min (minutes)</label>
-//     <input type="text" id="time-min-input" name="time-min" class="mt-05" placeholder="30">
-//   </div>
-//   <div class="half-form-row">
-//     <label for="time-max" id="time-max">Time max (minutes)</label>
-//     <input type="text" id="time-max-input" name="time-max" class="mt-05" placeholder="90">
-//   </div>
-// </div>
+function filteringBy(filterArr) {
+  return `        <div class="filtering-by">
+            <p><b>Filtering by: </b><i> ${filterArr}</i></p>
+            <i class="material-icons clear-filterby">close</i>
+          </div>`
+}

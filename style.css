@@ -247,7 +247,7 @@ textarea {
   background-color: #1e88e5;
 }
 
-.sorting-by {
+.sorting-by, .filtering-by {
   background-color: #b3e5fc;
   padding: 1em;
   margin: 0.25em;
@@ -256,7 +256,7 @@ textarea {
   align-items: center;
 }
 
-.clear-sortby {
+.clear-sortby, .clear-filterby {
   cursor: pointer;
 }
 

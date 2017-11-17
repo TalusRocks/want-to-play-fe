@@ -38,32 +38,50 @@ function filterGames() {
   cancelAndGoHome(gamesURL)
 }
 
+//*global variable
+let currentFilterDiv = document.querySelector('.current-filter')
+
 function loadFilteredGames(filterObj) {
   ////check if sorted, then sort THAT if yes
 
   return axios.get(gamesURL)
     .then(result => {
       let filterThis = result.data
-
+      let filterArr = []
       //////FILTER GAMES
       if (filterObj.interest.min) {
         filterThis = filterThis.filter(el => el.interest >= filterObj.interest.min)
+        filterArr.push(`min interest ${filterObj.interest.min}`)
       }
       if (filterObj.player.num) {
         filterThis = filterThis.filter(el => el.maxPlayer > filterObj.player.num)
+        filterArr.push(`${filterObj.player.num} players`)
       }
       if (filterObj.time.max) {
         filterThis = filterThis.filter(el => el.minTime < filterObj.time.max)
+        filterArr.push(`max time ${filterObj.time.max}`)
       }
       if (filterObj.rating.min) {
         filterThis = filterThis.filter(el => el.ratingBGG > filterObj.rating.min)
+        filterArr.push(`min rating ${filterObj.rating.min}`)
       }
       if (filterObj.weight.min) {
         filterThis = filterThis.filter(el => el.weightBGG > filterObj.weight.min)
+        filterArr.push(`min weight ${filterObj.weight.min}`)
       }
       if (filterObj.weight.max) {
         filterThis = filterThis.filter(el => el.weightBGG < filterObj.weight.max)
+        filterArr.push(`max weight ${filterObj.weight.max}`)
       }
+
+
+      //////ADD CURRENT FILTERS TO GAMES VIEW
+      localStorage.setItem('filterArr', JSON.stringify(filterArr))
+      let savedFilter = JSON.parse(localStorage.getItem('filterArr'))
+
+      savedFilter = savedFilter.join(', ')
+
+      currentFilterDiv.innerHTML += filteringBy(savedFilter)
 
       /////////ADD FILTERED GAMES TO HTML
       gameList.innerHTML = ""
@@ -71,8 +89,14 @@ function loadFilteredGames(filterObj) {
         gameList.innerHTML += gameItem(e.name, e.interest, e.minPlayer, e.maxPlayer, e.minTime, e.maxTime, e.ratingBGG, e.weightBGG, e.notes, e.tags, e.id)
       })
       colorRanges()
-
+      clearFilterStorage()
     })//end THEN
+}
 
-
+function clearFilterStorage() {
+  let clearFilterbyX = document.querySelector('.clear-filterby')
+  clearFilterbyX.addEventListener('click', (e) => {
+    localStorage.removeItem('filterArr')
+    currentFilterDiv.innerHTML = ""
+  })
 }

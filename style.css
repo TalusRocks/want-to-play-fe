@@ -72,6 +72,13 @@ main {
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: 0.5s;
+}
+.btn:hover {
+  background-color: #333;
+}
+.btn:active {
+  background-color: #444;
 }
 
 .add-game-wrap {
@@ -254,6 +261,9 @@ textarea {
 }
 
 /*GENERAL FORM*/
+.or {
+  margin-top: auto;
+}
 
 .cancel-save {
   display: flex;

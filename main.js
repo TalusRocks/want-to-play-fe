@@ -2,7 +2,7 @@ const gamesURL = 'http://localhost:3000/games'
 let gameList = document.querySelector('.game-list')
 let allButtons = document.querySelector('.all-buttons')
 
-/////////GENERAL USE
+/////////CANCEL AND GO HOME
 function cancelAndGoHome(gamesURL) {
   let cancel = document.querySelectorAll('.cancel')
   cancel.forEach(e => {
@@ -11,7 +11,7 @@ function cancelAndGoHome(gamesURL) {
     })
   })
 }
-
+////GO HOME
 function goHome(gamesURL) {
   gameList.innerHTML = ""
   return loadGames(gamesURL).then(() => {
@@ -19,7 +19,7 @@ function goHome(gamesURL) {
   })
 }
 
-//////////LOAD ALL GAMES
+////////////////////LOAD ALL GAMES//////////////////////
 function loadGames(gamesURL) {
   return axios.get(gamesURL)
     .then(result => {
@@ -42,11 +42,11 @@ function loadGames(gamesURL) {
       console.log(errors);
     })
 }
-///////****************TURN IT ON************//////
+//****************TURN IT ON************
 loadGames(gamesURL)
 
 
-///////////CREATE GAME
+///////////////////////CREATE GAME////////////////////////
 let addGameBtn = document.querySelector('.add-game')
 addGameBtn.addEventListener('click', (e) => {
   //LOAD VIEW
@@ -93,19 +93,21 @@ addGameBtn.addEventListener('click', (e) => {
 
 })
 
+//////////GO TO ANCHOR
 function goToAnchor(gamesURL, name) {
   return window.location.href = `http://127.0.0.1:8080/#${name}`;
 }
 
-///////////EDIT GAME
+////////////////////////EDIT GAME////////////////////////
 function editGame(name, interest, minPlayer, maxPlayer, minTime, maxTime, ratingBGG, weightBGG, notes, tags, gameId) {
 
-  //LOAD VIEW
+  ///LOAD EDIT VIEW
   gameList.innerHTML = editGameView(name, interest, minPlayer, maxPlayer, minTime, maxTime, ratingBGG, weightBGG, notes, tags, gameId)
   allButtons.classList.add('hide')
 
   //listen for submit
-  //!!!!!!!!! copied from submit, with only a change in url !!!!!!
+  //!!!!!!copied from create, url change, can be pulled out
+  ///////////GET FORM VALUES
   let submit = document.querySelector('#submit')
   submit.addEventListener('click', (e) => {
     e.preventDefault()
@@ -128,6 +130,7 @@ function editGame(name, interest, minPlayer, maxPlayer, minTime, maxTime, rating
     let tags = document.querySelector('#tags-input').value
     tags = tags.split(',')
 
+    /////POST TO DATABASE
     axios.put(`${gamesURL}/${gameId}`, {name, interest, minPlayer, maxPlayer, minTime, maxTime, ratingBGG, weightBGG, notes, tags})
       .then(result => {
         return goHome(gamesURL)
@@ -156,6 +159,9 @@ function deleteGame(gameId) {
     .then(result => {
       goHome(gamesURL)
     })
+    .catch(errors => {
+      console.log(errors, "in delete route");
+    })
 }
 
 //////////SORT LISTENER
@@ -165,4 +171,13 @@ sortButton.addEventListener('click', (e) => {
   gameList.innerHTML = sortGamesView()
   allButtons.classList.add('hide')
   sortGames()
+})
+
+//////////FILTER LISTENER
+let filterButton = document.querySelector('.filter')
+filterButton.addEventListener('click', (e) => {
+  gameList.innerHTML = ""
+  gameList.innerHTML = filterGamesView()
+  allButtons.classList.add('hide')
+  filterGames()
 })

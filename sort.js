@@ -1,8 +1,7 @@
-//wrap in a function to fire when sort is clicked (do that in main.js)
-
+//////////CHOOSE OPTIONS IN SORT VIEW//////////
 function sortGames() {
   let sortByP = document.querySelectorAll('.sortby')
-
+  ////////MANIPULATE "SELECTED ARRAY"
   let selectedArr = []
   //move in and out of selected array
   sortByP.forEach(el => {
@@ -30,7 +29,7 @@ function sortGames() {
 
   let sortByDiv = document.querySelector('.all-sortby')
   let thenByDiv = document.querySelector('.all-thenby')
-  //populate html, according to selected array
+  ///////WRITE SELECTED ARRAY TO HTML
   function loadSelected(selectedArr) {
     sortByDiv.innerHTML = ""
     for(let i = 0; i < selectedArr.length; i++) {
@@ -38,10 +37,10 @@ function sortGames() {
     }
   }
 
-  //Capture selectedArr on submit
-  //and persist to localStorage
+  ////////***SUBMIT***////////
   let sortSubmit = document.querySelector('#sort')
   sortSubmit.addEventListener('click', (e) => {
+    ////////WRITE SORTED GAMES TO HTML
     loadSorted(selectedArr).then(() => {
       allButtons.classList.remove('hide')
     })
@@ -50,17 +49,17 @@ function sortGames() {
   //Cancel
   cancelAndGoHome(gamesURL)
 
-
 }
 
-
+//*global variable
 let currentSortDiv = document.querySelector('.current-sort')
-///LOAD AS SORTED
+///////////////////LOAD SORTED GAMES//////////////////////
 function loadSorted(selectedArr){
   return axios.get(gamesURL)
     .then(result => {
       let sortThis = result.data
 
+      ////////SORT GAMES
       //loop over sort array BACKWARDS
       for (let i = selectedArr.length - 1; i >= 0 ; i--) {
 
@@ -97,26 +96,21 @@ function loadSorted(selectedArr){
 
       }
 
-      //add current sort to Games View
+      ////ADD CURRENT SORT TO GAMES VIEW
       localStorage.setItem('selectedSortArr', JSON.stringify(selectedArr))
       let savedSort = JSON.parse(localStorage.getItem('selectedSortArr'))
       let sArr = []
-      // for (let i = 0; i < savedSort.length; i++) {
-      //   sArr.push(savedSort[i].text)
-      // }
       savedSort.forEach(e => { sArr.push(e.text) })
-      console.log(sArr);
       savedSort = sArr.join(', ')
-      console.log(savedSort);
       currentSortDiv.innerHTML += sortingBy(savedSort)
 
-      //add Games
+      //////ADD SORTED GAMES TO HTML
       gameList.innerHTML = ""
       sortThis.forEach(e => {
         gameList.innerHTML += gameItem(e.name, e.interest, e.minPlayer, e.maxPlayer, e.minTime, e.maxTime, e.ratingBGG, e.weightBGG, e.notes, e.tags, e.id)
       })
-      colorRanges()
 
+      colorRanges()
       clearSortStorage()
     }) //close THEN
 }

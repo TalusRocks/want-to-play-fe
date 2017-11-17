@@ -81,7 +81,7 @@ function filterGamesView() {
 
       <div class="form-row cancel-save mt-2">
         <button id="cancel" class="cancel">Cancel</button>
-        <button type="submit" id="submit">Save</button>
+        <button type="submit" id="submit">Filter</button>
       </div>
 
     </form>

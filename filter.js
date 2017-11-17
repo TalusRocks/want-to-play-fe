@@ -59,7 +59,7 @@ function loadFilteredGames(filterObj) {
       }
       if (filterObj.time.max) {
         filterThis = filterThis.filter(el => el.minTime < filterObj.time.max)
-        filterArr.push(`max time ${filterObj.time.max}`)
+        filterArr.push(`approx time ${filterObj.time.max}`)
       }
       if (filterObj.rating.min) {
         filterThis = filterThis.filter(el => el.ratingBGG > filterObj.rating.min)

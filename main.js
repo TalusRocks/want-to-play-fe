@@ -1,4 +1,4 @@
-const gamesURL = 'http://localhost:3000/games'
+const gamesURL = 'https://want-to-play.herokuapp.com/games'
 let gameList = document.querySelector('.game-list')
 let allButtons = document.querySelector('.all-buttons')
 

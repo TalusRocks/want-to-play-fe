@@ -59,7 +59,6 @@
   rating.forEach(e => {
     let thisRating = parseInt(e.textContent)
     let ratingDivClass = e.classList
-console.log(thisRating);
     if (thisRating >= 0 && thisRating < 2) {
       ratingDivClass.add('green-1')
     } else if (thisRating >= 2 && thisRating < 4) {

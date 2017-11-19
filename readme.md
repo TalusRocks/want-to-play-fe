@@ -1,6 +1,8 @@
 #Want-to-Play
-![home view on mobile](./README/home-mobile.png =350x)
-![home view on desktop](./README/home-desktop.png =900x)
+![home view on mobile](./README/home-mobile.png)
+<img src="./README/home-mobile.png" width="350px">
+![home view on desktop](./README/home-desktop.png)
+<img src="./README/home-desktop.png" width="900px">
 
 ##LINKS
 [Deployed site](http://want-to-play.surge.sh/)

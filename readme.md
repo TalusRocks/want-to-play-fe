@@ -1,6 +1,6 @@
 #Want-to-Play
-![home view on mobile](https://github.com/TalusRocks/want-to-play-fe/blob/master/README/home-mobile.png =350x)
-![home view on desktop](https://github.com/TalusRocks/want-to-play-fe/blob/master/README/home-desktop.png =900x)
+![home view on mobile](./README/home-mobile.png =350x)
+![home view on desktop](./README/home-desktop.png =900x)
 
 ##LINKS
 [Deployed site](http://want-to-play.surge.sh/)
@@ -16,8 +16,8 @@ However, I found that I most often wanted to refer to my Sheet when I was out an
 
 So I made Want-to-Play, as a mobile-friendly tool for keeping a list of games that is sortable and filterable by a variety of attributes.
 
-![sorting](https://github.com/TalusRocks/want-to-play-fe/blob/master/README/sort.png =350x)
-![filtering](https://github.com/TalusRocks/want-to-play-fe/blob/master/README/filter.png =350x)
+![sorting](./README/sort.png =350x)
+![filtering](./README/filter.png =350x)
 
 ##USER STORIES
 As a user, I can...

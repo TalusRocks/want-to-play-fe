@@ -1,8 +1,8 @@
 #Want-to-Play
-![home view on mobile](./README/home-mobile.png)
-<img src="./README/home-mobile.png" width="350px">
-![home view on desktop](./README/home-desktop.png)
-<img src="./README/home-desktop.png" width="900px">
+
+<img src="./README/home-mobile.png" width="350px" alt="home view on mobile">
+
+<img src="./README/home-desktop.png" width="900px" alt-"home view on desktop">
 
 ##LINKS
 [Deployed site](http://want-to-play.surge.sh/)
@@ -18,8 +18,9 @@ However, I found that I most often wanted to refer to my Sheet when I was out an
 
 So I made Want-to-Play, as a mobile-friendly tool for keeping a list of games that is sortable and filterable by a variety of attributes.
 
-![sorting](./README/sort.png =350x)
-![filtering](./README/filter.png =350x)
+<img src="./README/sort.png" width="350px" alt="sort view on mobile">
+
+<img src="./README/filter.png" width="350px" alt="filter view on mobile">
 
 ##USER STORIES
 As a user, I can...

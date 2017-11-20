@@ -2,7 +2,7 @@
 
 <img src="./README/home-mobile.png" width="350px" alt="home view on mobile">
 
-<img src="./README/home-desktop.png" width="900px" alt-"home view on desktop">
+<img src="./README/home-desktop.png" width="900px" alt="home view on desktop">
 
 ##LINKS
 [Deployed site](http://want-to-play.surge.sh/)

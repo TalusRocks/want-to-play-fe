@@ -59,44 +59,34 @@ function loadSorted(selectedArr){
     .then(result => {
       let sortThis = result.data
 
+      // What about refactoring out that sort function which is the
+      // same for everything except the key is different? You can
+      // do so with a closure!
+      function sorter (key, asc=true) {
+        return (a, b) => asc ? a[key] - b[key] : b[key] - a[key]
+      }
+      
       ////////SORT GAMES
       //loop over sort array BACKWARDS
       for (let i = selectedArr.length - 1; i >= 0 ; i--) {
-
-        if (selectedArr[i].id === "interest-desc") {
-          sortThis.sort(function(a, b) {
-            return b.interest - a.interest
-          })
-        }
-        if (selectedArr[i].id === "rating-desc") {
-          sortThis.sort(function(a, b) {
-            return b.ratingBGG - a.ratingBGG
-          })
-        }
-        if (selectedArr[i].id === "players-asc") {
-          sortThis.sort(function(a, b) {
-            return a.maxPlayer - b.maxPlayer
-          })
-        }
-        if (selectedArr[i].id === "players-desc") {
-          sortThis.sort(function(a, b) {
-            return b.maxPlayer - a.maxPlayer
-          })
-        }
-        if (selectedArr[i].id === "time-asc") {
-          sortThis.sort(function(a, b) {
-            return a.maxTime - b.maxTime
-          })
-        }
-        if (selectedArr[i].id === "time-desc") {
-          sortThis.sort(function(a, b) {
-            return b.maxTime - a.maxTime
-          })
-        }
+        // Let's also refactor out the selectedArr[i] part.
+        const { id } = selectedArr[i]
+        
+        // We could also refactor this part even further but it'd start to
+        // get kind of tricky. Let me know if you want to discuss.  :)
+        if (id === "interest-desc") sortThis.sort(sorter('interest', false))
+        if (id === "rating-desc") sortThis.sort(sorter('ratingBGG', false))
+        if (id === "players-asc") sortThis.sort(sorter('maxPlayer', true))
+        if (id === "players-desc") sortThis.sort(sorter('maxPlayer', false))
+        if (id === "time-asc") sortThis.sort(sorter('maxTime', true))
+        if (id === "time-desc") sortThis.sort(sorter('interest', false))
 
       }
 
       ////ADD CURRENT SORT TO GAMES VIEW
+      // If you're thinking of where to add OOP on the frontend, starting
+      // with local storage is a great idea. Imagine a LocalStorage class
+      // with some of the same method names.
       localStorage.setItem('selectedSortArr', JSON.stringify(selectedArr))
       let savedSort = JSON.parse(localStorage.getItem('selectedSortArr'))
       let sArr = []

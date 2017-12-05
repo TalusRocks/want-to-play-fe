@@ -1,4 +1,5 @@
-  function colorRanges(){
+// You're doing this filtering a lot. I wonder if there's a more generic way to do this!
+function colorRanges(){
   let interest = document.querySelectorAll('.interest .spec-number')
   interest.forEach(e => {
     let thisInterest = parseInt(e.textContent)
